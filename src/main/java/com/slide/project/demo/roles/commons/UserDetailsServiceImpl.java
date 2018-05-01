@@ -1,4 +1,4 @@
-package com.slide.project.demo.User;
+package com.slide.project.demo.roles.commons;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

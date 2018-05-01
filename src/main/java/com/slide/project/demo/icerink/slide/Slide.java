@@ -1,13 +1,21 @@
 package com.slide.project.demo.icerink.slide;
 
-import com.slide.project.demo.customer.Customer;
+import com.slide.project.demo.icerink.Icerink;
+import com.slide.project.demo.roles.customer.Customer;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Entity
 public class Slide {
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long slideId;
+   @ManyToOne
+   @JoinColumn(name="icerink_id")
+    Icerink icerink;
     Integer places;
     //Integer freePlaces;
     Map<Date,List<Customer>> reservedPlaces;
@@ -22,6 +30,10 @@ public class Slide {
 
     public Long getSlideId() {
         return slideId;
+    }
+
+    public Icerink getIcerink() {
+        return icerink;
     }
 
     public void setSlideId(Long slideId) {

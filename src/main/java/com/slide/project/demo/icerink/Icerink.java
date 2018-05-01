@@ -1,33 +1,35 @@
 package com.slide.project.demo.icerink;
 
-import com.slide.project.demo.common.Adress;
-import com.slide.project.demo.customer.Customer;
+import com.slide.project.demo.common.Address;
 import com.slide.project.demo.icerink.additional.Additional;
 import com.slide.project.demo.icerink.slide.Slide;
 
-import java.util.Date;
+import javax.persistence.*;
 import java.util.List;
-import java.util.Map;
 
+@Entity
 public class Icerink {
-    Long icerinkId;
-    String name;
-    List<String> phoneNumber;
-    String website;
-    Adress adress;
-    Slide slide;
-    List<Additional> additionals;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long icerinkId;
+    private String name;
+    private List<String> phoneNumber;
+    private String website;
+    private Address address;
+    @OneToMany(targetEntity = Slide.class, mappedBy = "icerink")
+    private List<Slide> slides;
+    private List<Additional> additionals;
     //Map<Date,Slide> slides;?
     //Date timetable;?
 
 
-    public Icerink(Long icerinkId, String name, List<String> phoneNumber, String website, Adress adress, Slide slide, List<Additional> additionals) {
+    public Icerink(Long icerinkId, String name, List<String> phoneNumber, String website, Address address, List<Slide> slides, List<Additional> additionals) {
         this.icerinkId = icerinkId;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.website = website;
-        this.adress = adress;
-        this.slide = slide;
+        this.address = address;
+        this.slides = slides;
         this.additionals = additionals;
     }
 
@@ -63,20 +65,20 @@ public class Icerink {
         this.website = website;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public Slide getSlide() {
-        return slide;
+    public List<Slide> getSlides() {
+        return slides;
     }
 
-    public void setSlide(Slide slide) {
-        this.slide = slide;
+    public void setSlides(List<Slide> slides) {
+        this.slides = slides;
     }
 
     public List<Additional> getAdditionals() {

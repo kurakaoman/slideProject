@@ -1,6 +1,9 @@
 package com.slide.project.demo.common;
 
-public class Adress {
+
+
+
+public class Address {
     Long adressId;
     String country;
     String state;
@@ -10,7 +13,7 @@ public class Adress {
     int hause;
     int flat;
 
-    public Adress(Long adressId, String country, String state, String city, String street, int hause) {
+    public Address(Long adressId, String country, String state, String city, String street, int hause) {
         this.adressId = adressId;
         this.country = country;
         this.state = state;

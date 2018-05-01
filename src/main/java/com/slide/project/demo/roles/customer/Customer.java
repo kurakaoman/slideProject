@@ -1,20 +1,19 @@
-package com.slide.project.demo.User;
+package com.slide.project.demo.roles.customer;
 
+import com.slide.project.demo.common.Address;
 import com.slide.project.demo.icerink.Icerink;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Entity
-public class User implements UserDetails {
+@Table
+public class Customer implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +25,14 @@ public class User implements UserDetails {
     private List<Icerink> icerinkList;
     private List<Icerink> favoritesIcerink;
     private String password;
+    private Address location;
 
-    public User(){}
+    public Address getLocation() {
+        return location;
+    }
+    public Customer(){}
 
-    public User(String name, String surname, String emailaddress, int age, List<Icerink> icerinkList, List<Icerink> favoritesIcerink, String password) {
+    public Customer(String name, String surname, String emailaddress, int age, List<Icerink> icerinkList, List<Icerink> favoritesIcerink, String password) {
         this.name = name;
         this.surname = surname;
         this.emailaddress = emailaddress;
@@ -45,7 +48,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
     }
 
     @Override
