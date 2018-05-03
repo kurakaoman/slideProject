@@ -1,7 +1,6 @@
 package com.slide.project.demo.roles.customer;
 
 import com.slide.project.demo.common.Address;
-import com.slide.project.demo.icerink.Icerink;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Entity
 @Table
@@ -22,25 +20,17 @@ public class Customer implements UserDetails {
     private String surname;
     private String emailaddress;
     private int age;
-    private List<Icerink> icerinkList;
-    private List<Icerink> favoritesIcerink;
+//    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER)//<<ODKOMENTUJ>>//
+//    private List<Icerink> icerinkList;//<<ODKOMENTUJ>>//
+//    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER) //<<ODKOMENTUJ>>//
+//    private List<Icerink> favoritesIcerink; //<<ODKOMENTUJ>>//
     private String password;
     private Address location;
+//    private Slide slide; //List<Slide> slides;
+//    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink"
+//    private Admin admin;
 
-    public Address getLocation() {
-        return location;
-    }
     public Customer(){}
-
-    public Customer(String name, String surname, String emailaddress, int age, List<Icerink> icerinkList, List<Icerink> favoritesIcerink, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.emailaddress = emailaddress;
-        this.age = age;
-        this.icerinkList = icerinkList;
-        this.favoritesIcerink = favoritesIcerink;
-        this.password = password;
-    }
 
     public long getId() {
         return id;
@@ -80,21 +70,38 @@ public class Customer implements UserDetails {
         this.age = age;
     }
 
-    public List<Icerink> getIcerinkList() {
-        return icerinkList;
+
+
+//    public List<Icerink> getIcerinkList() {return icerinkList;}//<<ODKOMENTUJ>>//
+
+//    public void setIcerinkList(List<Icerink> icerinkList) {this.icerinkList = icerinkList;}//<<ODKOMENTUJ>>//
+
+//    public List<Icerink> getFavoritesIcerink() {return favoritesIcerink;}//<<ODKOMENTUJ>>//
+
+//    public void setFavoritesIcerink(List<Icerink> favoritesIcerink) {this.favoritesIcerink = favoritesIcerink;}//<<ODKOMENTUJ>>//
+
+
+
+    public Address getLocation() {
+        return location;
     }
 
-    public void setIcerinkList(List<Icerink> icerinkList) {
-        this.icerinkList = icerinkList;
+    public void setLocation(Address location) {
+        this.location = location;
     }
+//
+//    public Slide getSlide() {
+//        return slide;
+//    }
+//
+//    public void setSlide(Slide slide) {
+//        this.slide = slide;
+//    }
 
-    public List<Icerink> getFavoritesIcerink() {
-        return favoritesIcerink;
-    }
 
-    public void setFavoritesIcerink(List<Icerink> favoritesIcerink) {
-        this.favoritesIcerink = favoritesIcerink;
-    }
+//    public Admin getAdmin() {
+//        return admin;
+//    }
 
     @Override
     public String getUsername() {

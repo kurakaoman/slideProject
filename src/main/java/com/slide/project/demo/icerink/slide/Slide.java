@@ -1,40 +1,43 @@
 package com.slide.project.demo.icerink.slide;
 
-import com.slide.project.demo.icerink.Icerink;
-import com.slide.project.demo.roles.customer.Customer;
+        import com.slide.project.demo.icerink.Icerink;
+        import com.slide.project.demo.roles.customer.Customer;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+        import javax.persistence.*;
+        import java.util.Date;
+        import java.util.List;
 
 @Entity
 public class Slide {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long slideId;
-   @ManyToOne
-   @JoinColumn(name="icerink_id")
-    Icerink icerink;
-    Integer places;
-    //Integer freePlaces;
-    Map<Date,List<Customer>> reservedPlaces;
-    Date timetable;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long slideId;
+//   @ManyToOne
+//    @JoinColumn(name="icerink_id")
+//    private Icerink icerink;
 
-    public Slide(Long slideId, Integer places, Map<Date, List<Customer>> reservedPlaces, Date timetable) {
+    private Integer places;
+    private Date hour;
+//    @ManyToMany(fetch=FetchType.EAGER) //mappedBy=slide ?//<<ODKOMENTUJ>>//
+//    private List<Customer> participants; //<<ODKOMENTUJ>>//
+
+    public Slide(){
+
+    }
+    public Slide(Long slideId, Integer places, Date hour) {
         this.slideId = slideId;
         this.places = places;
-        this.reservedPlaces = reservedPlaces;
-        this.timetable = timetable;
+//        this.participants = participants;//<<ODKOMENTUJ>>//
+        this.hour = hour;
     }
 
     public Long getSlideId() {
         return slideId;
     }
 
-    public Icerink getIcerink() {
-        return icerink;
-    }
+//    public Icerink getIcerink() {
+//        return icerink;
+//    }
 
     public void setSlideId(Long slideId) {
         this.slideId = slideId;
@@ -48,19 +51,15 @@ public class Slide {
         this.places = places;
     }
 
-    public Map<Date, List<Customer>> getReservedPlaces() {
-        return reservedPlaces;
+//    public List<Customer> getParticipants() {return participants;} //<<ODKOMENTUJ>>//
+
+//    public void setParticipants(List<Customer> participants) { this.participants = participants;}//<<ODKOMENTUJ>>//
+
+    public Date getHour() {
+        return hour;
     }
 
-    public void setReservedPlaces(Map<Date, List<Customer>> reservedPlaces) {
-        this.reservedPlaces = reservedPlaces;
-    }
-
-    public Date getTimetable() {
-        return timetable;
-    }
-
-    public void setTimetable(Date timetable) {
-        this.timetable = timetable;
+    public void setHour(Date hour) {
+        this.hour = hour;
     }
 }

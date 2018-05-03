@@ -6,10 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.security.PublicKey;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,19 +19,15 @@ public class Admin implements UserDetails{
     private int id;
     private String username;
     private String password;
-    private List<Customer> customerList;
-    private List<Manager> managerList;
+//    @OneToMany(fetch = FetchType.EAGER)//mappedBy = "admin"//<<ODKOMENTUJ>>//
+//    private List<Customer> customerList;//<<ODKOMENTUJ>>//
+//    @OneToMany(fetch = FetchType.EAGER)//mappedBy = "admin"//<<ODKOMENTUJ>>//
+//    private List<Manager> managerList;//<<ODKOMENTUJ>>//
 
     public Admin(){
 
     }
 
-    public Admin(String username, String password, List<Customer> customerList, List<Manager> managerList) {
-        this.username = username;
-        this.password = password;
-        this.customerList = customerList;
-        this.managerList = managerList;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -55,13 +48,9 @@ public class Admin implements UserDetails{
         return id;
     }
 
-    public List<Customer> getCustomerList() {
-        return customerList;
-    }
+ //   public List<Customer> getCustomerList() {return customerList;}//<<ODKOMENTUJ>>//
 
-    public List<Manager> getManagerList() {
-        return managerList;
-    }
+//    public List<Manager> getManagerList() {return managerList;}//<<ODKOMENTUJ>>//
 
     @Override
     public boolean isAccountNonExpired() {
