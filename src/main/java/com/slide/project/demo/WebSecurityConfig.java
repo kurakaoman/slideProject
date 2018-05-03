@@ -1,5 +1,8 @@
 package com.slide.project.demo;
 
+import com.slide.project.demo.roles.admin.AdminDetailsServiceImpl;
+import com.slide.project.demo.roles.customer.CustomerDetailsServiceImpl;
+import com.slide.project.demo.roles.manager.ManagerDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,10 +18,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(securedEnabled = true)// potrrzebne do @Secured("ROLE_XXX" która ogranicza dostęp do poszczególnych metod dla odpowiednich rul
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserDetailsService userDetailsService;
+    private UserDetailsService customerDetailsService;
+    private UserDetailsService managerDetailsService;
+    private UserDetailsService adminDetailsService;
 
-    public WebSecurityConfig(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    public WebSecurityConfig(CustomerDetailsServiceImpl customerDetailsService, ManagerDetailsServiceImpl managerDetailsService, AdminDetailsServiceImpl adminDetailsService) {
+        this.customerDetailsService = customerDetailsService;
+        this.managerDetailsService = managerDetailsService;
+        this.adminDetailsService = adminDetailsService;
     }
 
     @Override
@@ -37,7 +44,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(customerDetailsService);
+        auth.userDetailsService(managerDetailsService);
+        auth.userDetailsService(adminDetailsService);
     }
     // Sprawia, że hasła nie są szyfrowane. - zastanów się czy tego nie usunąć
     @Bean

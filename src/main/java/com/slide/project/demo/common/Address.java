@@ -1,10 +1,18 @@
 package com.slide.project.demo.common;
 
 
+import com.slide.project.demo.icerink.Icerink;
+import com.slide.project.demo.roles.customer.Customer;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity
 public class Address {
-    Long adressId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long addressId;
     String country;
     String state;
     String city;
@@ -12,9 +20,13 @@ public class Address {
     String street;
     int hause;
     int flat;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "address")
+    private Set<Customer> customers = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "address")
+    private Set<Icerink> icerinks = new HashSet<>();
 
-    public Address(Long adressId, String country, String state, String city, String street, int hause) {
-        this.adressId = adressId;
+    public Address(Long addressId, String country, String state, String city, String street, int hause) {
+        this.addressId = addressId;
         this.country = country;
         this.state = state;
         this.city = city;
@@ -22,6 +34,9 @@ public class Address {
         this.hause = hause;
     }
 
+    public Long getAddressId() {
+        return addressId;
+    }
     public String getCountry() {
         return country;
     }

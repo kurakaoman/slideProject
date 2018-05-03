@@ -17,6 +17,8 @@ public class Icerink {
     private String name;
 //    private List<String> phoneNumber;  //<<ODKOMENTUJ>>//
     private String website;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="adress_id", unique = true)
     private Address address;
 //    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink" //<<ODKOMENTUJ>>//
 //    private List<Slide> slides; //<<ODKOMENTUJ>>//

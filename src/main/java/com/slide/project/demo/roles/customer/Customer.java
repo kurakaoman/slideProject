@@ -25,7 +25,9 @@ public class Customer implements UserDetails {
 //    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER) //<<ODKOMENTUJ>>//
 //    private List<Icerink> favoritesIcerink; //<<ODKOMENTUJ>>//
     private String password;
-    private Address location;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="adress_id", unique = true)
+    private Address address;
 //    private Slide slide; //List<Slide> slides;
 //    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink"
 //    private Admin admin;
@@ -82,12 +84,12 @@ public class Customer implements UserDetails {
 
 
 
-    public Address getLocation() {
-        return location;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setLocation(Address location) {
-        this.location = location;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 //
 //    public Slide getSlide() {
