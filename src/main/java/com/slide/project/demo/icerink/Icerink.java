@@ -3,6 +3,8 @@ package com.slide.project.demo.icerink;
 import com.slide.project.demo.common.Address;
 import com.slide.project.demo.icerink.additional.Additional;
 import com.slide.project.demo.icerink.slide.Slide;
+import com.slide.project.demo.roles.customer.Customer;
+import com.slide.project.demo.roles.manager.Manager;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,24 +15,21 @@ public class Icerink {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long icerinkId;
     private String name;
-    private List<String> phoneNumber;
+//    private List<String> phoneNumber;  //<<ODKOMENTUJ>>//
     private String website;
     private Address address;
-    @OneToMany(targetEntity = Slide.class, mappedBy = "icerink")
-    private List<Slide> slides;
-    private List<Additional> additionals;
+//    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink" //<<ODKOMENTUJ>>//
+//    private List<Slide> slides; //<<ODKOMENTUJ>>//
+//    private List<Additional> additionals; //<<ODKOMENTUJ>>//
+//    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink"
+//    private Manager manager;
+//    private Customer closeCustomer; //List<Customer>;
+//    private Customer fun;//List<Customer>;
     //Map<Date,Slide> slides;?
     //Date timetable;?
 
 
-    public Icerink(Long icerinkId, String name, List<String> phoneNumber, String website, Address address, List<Slide> slides, List<Additional> additionals) {
-        this.icerinkId = icerinkId;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.website = website;
-        this.address = address;
-        this.slides = slides;
-        this.additionals = additionals;
+    public Icerink() {
     }
 
     public Long getIcerinkId() {
@@ -49,13 +48,9 @@ public class Icerink {
         this.name = name;
     }
 
-    public List<String> getPhoneNumber() {
-        return phoneNumber;
-    }
+//    public List<String> getPhoneNumber() { return phoneNumber; }//<<ODKOMENTUJ>>//
 
-    public void setPhoneNumber(List<String> phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+//    public void setPhoneNumber(List<String> phoneNumber) {this.phoneNumber = phoneNumber;}//<<ODKOMENTUJ>>//
 
     public String getWebsite() {
         return website;
@@ -73,19 +68,32 @@ public class Icerink {
         this.address = address;
     }
 
-    public List<Slide> getSlides() {
-        return slides;
-    }
+//    public List<Slide> getSlides() {return slides;}//<<ODKOMENTUJ>>//
 
-    public void setSlides(List<Slide> slides) {
-        this.slides = slides;
-    }
+//    public void setSlides(List<Slide> slides) {this.slides = slides;}//<<ODKOMENTUJ>>//
 
-    public List<Additional> getAdditionals() {
-        return additionals;
-    }
+//    public List<Additional> getAdditionals() {return additionals;}//<<ODKOMENTUJ>>//
 
-    public void setAdditionals(List<Additional> additionals) {
-        this.additionals = additionals;
-    }
+//    public void setAdditionals(List<Additional> additionals) {this.additionals = additionals;}//<<ODKOMENTUJ>>//
+
+
+
+//    public Manager getManager() {
+//        return manager;
+//    }
+//       public Customer getCloseCustomer() {
+//        return closeCustomer;
+//    }
+//
+//    public void setCloseCustomer(Customer closeCustomer) {
+//        this.closeCustomer = closeCustomer;
+//    }
+//
+//    public Customer getFun() {
+//        return fun;
+//    }
+//
+//    public void setFun(Customer fun) {
+//        this.fun = fun;
+//    }
 }
