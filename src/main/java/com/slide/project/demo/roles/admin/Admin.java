@@ -11,6 +11,8 @@ import java.security.PublicKey;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 public class Admin implements UserDetails{
 
@@ -19,10 +21,10 @@ public class Admin implements UserDetails{
     private int id;
     private String username;
     private String password;
-//    @OneToMany(fetch = FetchType.EAGER)//mappedBy = "admin"//<<ODKOMENTUJ>>//
-//    private List<Customer> customerList;//<<ODKOMENTUJ>>//
-//    @OneToMany(fetch = FetchType.EAGER)//mappedBy = "admin"//<<ODKOMENTUJ>>//
-//    private List<Manager> managerList;//<<ODKOMENTUJ>>//
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "admin")
+    private Set<Customer> customerList;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "admin")
+    private List<Manager> managerList;
 
     public Admin(){
 
@@ -48,9 +50,17 @@ public class Admin implements UserDetails{
         return id;
     }
 
- //   public List<Customer> getCustomerList() {return customerList;}//<<ODKOMENTUJ>>//
+    public Set<Customer> getCustomerList() {return customerList;}
 
-//    public List<Manager> getManagerList() {return managerList;}//<<ODKOMENTUJ>>//
+    public List<Manager> getManagerList() {return managerList;}
+
+    public void setCustomerList(Set<Customer> customerList) {
+        this.customerList = customerList;
+    }
+
+    public void setManagerList(List<Manager> managerList) {
+        this.managerList = managerList;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

@@ -15,13 +15,14 @@ import java.util.List;
 public class Manager implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int managerId;
     private String username;
     private String password;
-//    @OneToMany(fetch = FetchType.EAGER)//mappedBy = "manager" //<<ODKOMENTUJ>>//
-//    private List<Icerink> icerinkList; //<<ODKOMENTUJ>>//
-//    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink"
-//    private Admin admin;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "manager")
+    private List<Icerink> icerinkList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id",unique = true)
+    private Admin admin;
 
     public Manager(){}
 
@@ -40,13 +41,13 @@ public class Manager implements UserDetails {
         return username;
     }
 
-//    public List<Icerink> getIcerinkList() {return icerinkList;}//<<ODKOMENTUJ>>//
+    public List<Icerink> getIcerinkList() {return icerinkList;}
 
-//    public void setIcerinkList(List<Icerink> icerinkList) { this.icerinkList = icerinkList; }//<<ODKOMENTUJ>>//
+    public void setIcerinkList(List<Icerink> icerinkList) { this.icerinkList = icerinkList; }
 
-//    public Admin getAdmin() {
-//        return admin;
-//    }
+    public Admin getAdmin() {
+        return admin;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

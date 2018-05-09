@@ -1,6 +1,9 @@
 package com.slide.project.demo.roles.customer;
 
 import com.slide.project.demo.common.Address;
+import com.slide.project.demo.icerink.Icerink;
+import com.slide.project.demo.icerink.slide.Slide;
+import com.slide.project.demo.roles.admin.Admin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -20,17 +25,22 @@ public class Customer implements UserDetails {
     private String surname;
     private String emailaddress;
     private int age;
-//    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER)//<<ODKOMENTUJ>>//
-//    private List<Icerink> icerinkList;//<<ODKOMENTUJ>>//
-//    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER) //<<ODKOMENTUJ>>//
-//    private List<Icerink> favoritesIcerink; //<<ODKOMENTUJ>>//
+//    @ManyToMany(fetch=FetchType.LAZY)
+//    @JoinColumn(name="slide_id", unique = true)
+//    private List<Slide> slides; //ślizgawki na które się zapisał urzytkownik
+
+    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER,mappedBy = "customer")
+    private Set<Icerink> icerinkList;
+    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER,mappedBy = "customer")
+    private Set<Icerink> favoritesIcerink;
     private String password;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="adress_id", unique = true)
     private Address address;
-//    private Slide slide; //List<Slide> slides;
-//    @OneToMany(fetch = FetchType.EAGER) //mappedBy = "icerink"
-//    private Admin admin;
+    //    private Slide slide; //List<Slide> slides;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id",unique = true)
+    private Admin admin;
 
     public Customer(){}
 
@@ -72,15 +82,21 @@ public class Customer implements UserDetails {
         this.age = age;
     }
 
+//    public List<Slide> getSlides() {
+//        return slides;
+//    }
+//
+//    public void setSlides(List<Slide> slides) {
+//        this.slides = slides;
+//    }
 
+    public Set<Icerink> getIcerinkList() {return icerinkList;}//<<ODKOMENTUJ>>//
 
-//    public List<Icerink> getIcerinkList() {return icerinkList;}//<<ODKOMENTUJ>>//
+    public void setIcerinkList(Set<Icerink> icerinkList) {this.icerinkList = icerinkList;}//<<ODKOMENTUJ>>//
 
-//    public void setIcerinkList(List<Icerink> icerinkList) {this.icerinkList = icerinkList;}//<<ODKOMENTUJ>>//
+    public Set<Icerink> getFavoritesIcerink() {return favoritesIcerink;}//<<ODKOMENTUJ>>//
 
-//    public List<Icerink> getFavoritesIcerink() {return favoritesIcerink;}//<<ODKOMENTUJ>>//
-
-//    public void setFavoritesIcerink(List<Icerink> favoritesIcerink) {this.favoritesIcerink = favoritesIcerink;}//<<ODKOMENTUJ>>//
+    public void setFavoritesIcerink(Set<Icerink> favoritesIcerink) {this.favoritesIcerink = favoritesIcerink;}//<<ODKOMENTUJ>>//
 
 
 
@@ -101,9 +117,9 @@ public class Customer implements UserDetails {
 //    }
 
 
-//    public Admin getAdmin() {
-//        return admin;
-//    }
+    public Admin getAdmin() {
+        return admin;
+    }
 
     @Override
     public String getUsername() {

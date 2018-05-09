@@ -12,10 +12,10 @@ import java.util.Set;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long addressId;
-    String country;
-    String state;
-    String city;
+    private Long addressId;
+    private String country;
+    private String state;
+    private String city;
     //String postalCode;
     String street;
     int hause;

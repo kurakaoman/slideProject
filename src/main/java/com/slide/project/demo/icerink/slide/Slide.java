@@ -12,14 +12,15 @@ public class Slide {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long slideId;
-//   @ManyToOne
-//    @JoinColumn(name="icerink_id")
-//    private Icerink icerink;
+   @ManyToOne
+    @JoinColumn(name="icerink_id", unique = true)
+    private Icerink icerink;
 
     private Integer places;
     private Date hour;
-//    @ManyToMany(fetch=FetchType.EAGER) //mappedBy=slide ?//<<ODKOMENTUJ>>//
-//    private List<Customer> participants; //<<ODKOMENTUJ>>//
+
+//    @ManyToMany(fetch=FetchType.EAGER, mappedBy = "slide")
+//    private List<Customer> participants;
 
     public Slide(){
 
@@ -51,9 +52,9 @@ public class Slide {
         this.places = places;
     }
 
-//    public List<Customer> getParticipants() {return participants;} //<<ODKOMENTUJ>>//
-
-//    public void setParticipants(List<Customer> participants) { this.participants = participants;}//<<ODKOMENTUJ>>//
+//    public List<Customer> getParticipants() {return participants;}
+//
+//    public void setParticipants(List<Customer> participants) { this.participants = participants;}
 
     public Date getHour() {
         return hour;
