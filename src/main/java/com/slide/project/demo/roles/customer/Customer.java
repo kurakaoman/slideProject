@@ -26,7 +26,7 @@ public class Customer implements UserDetails {
     private String emailaddress;
     private int age;
     @ManyToMany(fetch=FetchType.EAGER, mappedBy = "participants")
-    private Set<Slide> slides; //ślizgawki na które się zapisał urzytkownik
+    private Set<Slide> slides; //ślizgawki na które się zapisał urzytkownik...
 
     @ManyToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER)
     private Set<Icerink> icerinkList;
