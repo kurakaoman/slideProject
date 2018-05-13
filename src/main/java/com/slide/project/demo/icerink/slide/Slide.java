@@ -6,21 +6,23 @@ package com.slide.project.demo.icerink.slide;
         import javax.persistence.*;
         import java.util.Date;
         import java.util.List;
+        import java.util.Set;
 
 @Entity
 public class Slide {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long slideId;
-   @ManyToOne
+    @ManyToOne
     @JoinColumn(name="icerink_id", unique = true)
     private Icerink icerink;
 
     private Integer places;
     private Date hour;
 
-//    @ManyToMany(fetch=FetchType.EAGER, mappedBy = "slide")
-//    private List<Customer> participants;
+    @ManyToMany(fetch=FetchType.EAGER)
+//    @JoinTable(name = "slide_customer", joinColumns = {@JoinColumn(name = "slide_id")}, inverseJoinColumns = {@JoinColumn(name = "customer_id")})
+    private Set<Customer> participants;
 
     public Slide(){
 
@@ -52,9 +54,9 @@ public class Slide {
         this.places = places;
     }
 
-//    public List<Customer> getParticipants() {return participants;}
-//
-//    public void setParticipants(List<Customer> participants) { this.participants = participants;}
+    public Set<Customer> getParticipants() {return participants;}
+
+    public void setParticipants(Set<Customer> participants) { this.participants = participants;}
 
     public Date getHour() {
         return hour;

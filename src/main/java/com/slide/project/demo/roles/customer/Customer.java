@@ -25,13 +25,12 @@ public class Customer implements UserDetails {
     private String surname;
     private String emailaddress;
     private int age;
-//    @ManyToMany(fetch=FetchType.LAZY)
-//    @JoinColumn(name="slide_id", unique = true)
-//    private List<Slide> slides; //ślizgawki na które się zapisał urzytkownik
+    @ManyToMany(fetch=FetchType.EAGER, mappedBy = "participants")
+    private Set<Slide> slides; //ślizgawki na które się zapisał urzytkownik
 
-    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER,mappedBy = "customer")
+    @ManyToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER)
     private Set<Icerink> icerinkList;
-    @OneToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER,mappedBy = "customer")
+    @ManyToMany(targetEntity=Icerink.class, fetch=FetchType.EAGER)
     private Set<Icerink> favoritesIcerink;
     private String password;
     @ManyToOne(fetch=FetchType.LAZY)
@@ -82,13 +81,13 @@ public class Customer implements UserDetails {
         this.age = age;
     }
 
-//    public List<Slide> getSlides() {
-//        return slides;
-//    }
-//
-//    public void setSlides(List<Slide> slides) {
-//        this.slides = slides;
-//    }
+    public Set<Slide> getSlides() {
+        return slides;
+    }
+
+    public void setSlides(Set<Slide> slides) {
+        this.slides = slides;
+    }
 
     public Set<Icerink> getIcerinkList() {return icerinkList;}//<<ODKOMENTUJ>>//
 
@@ -144,5 +143,13 @@ public class Customer implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
