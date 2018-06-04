@@ -34,12 +34,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/unauth/**", "/page/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
+//                .antMatchers("/unauth/**", "/page/**")
+                .antMatchers("/**")
+                .permitAll();
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .httpBasic();
     }
 
     @Override

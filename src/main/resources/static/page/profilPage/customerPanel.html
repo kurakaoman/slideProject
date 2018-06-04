@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en" xmlns:background="http://www.w3.org/1999/xhtml" xmlns:background-repeat="http://java.sun.com/JSP/Page">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+
+        /* The Overlay (background) */
+        .overlay {
+            /* Height & width depends on how you want to reveal the overlay (see JS below) */
+            height: 0%;
+            width: 80%;
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 10%;
+            top: 0;
+            background-color: rgb(0, 0, 0); /* Black fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/opacity */
+            overflow-x: hidden; /* Disable horizontal scroll */
+            transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+        }
+
+        /* Position the content inside the overlay */
+        .overlay-content {
+            position: relative;
+            top: 25%; /* 25% from the top */
+            width: 100%; /* 100% width */
+            text-align: center; /* Centered text/links */
+            margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+        }
+
+        /* The navigation links inside the overlay */
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 36px;
+            color: #818181;
+            display: block; /* Display block instead of inline */
+            transition: 0.3s; /* Transition effects on hover (color) */
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .overlay a:hover, .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        /* Position the close button (top right corner) */
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+
+        /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+        @media screen and (max-height: 450px) {
+            .overlay a {
+                font-size: 20px
+            }
+
+            .overlay .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
+        }
+
+        .element {
+            border: 5px solid;
+            border-color: #f1f1f1;
+            border-top: 0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 10px;
+        }
+
+        .nav-item .row {
+            margin-top: 10px;
+        }
+
+        #menu-button {
+            position: fixed;
+            top: 0;
+        }
+
+        #overflow {
+            overflow: visible;
+        }
+
+        #no-paddings {
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-left: 0px;
+            margin-right: 7.5px;
+        }
+
+        #img {
+            max-width: 100%;
+            height: auto;
+        }
+        .menu-button{
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 5px solid;
+            border-color: #f1f1f1;
+            border-top: 0;
+            border-bottom: 0;
+            padding: 10px;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="myGlobal.css">
+    <title>Profil zalogowanego urzytkownika</title>
+</head>
+
+<body background="/page/loginLogout/images/614e29abe3da0b9e8b75f1b9aaab7a17.jpg" background-repeat="no-repeat"
+      background-size="100%" backgroung-position="center" ;>
+<div class="container">
+    <div class="row" style="background-color: black">
+        <div class="col-md-12">
+    <div class="row" align="center">
+        <div class="col-md-12">
+            <span class="menu-button">Favorites</span>
+            <span class="menu-button">History</span>
+            <span class="menu-button">Friends</span>
+            <span class="menu-button">Settings</span>
+            <span class="menu-button">About App</span>
+            <span class="menu-button">Find slide</span>
+            <span class="menu-button">Messages</span>
+            <span class="menu-button">Log Out</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"  style="color: white; font-size: 32px" align="center">Name</div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="color: white">*user</div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div align="center" ;><IMG SRC="/page/loginLogout/images/TrollFace.jpg"
+                                       style="filter:alpha(opacity=20); max-height:20%; max-width: 20%"></div>
+        </div>
+    </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="height:50%"  background="/page/loginLogout/images/614e29abe3da0b9e8b75f1b9aaab7a17.jpg" background-repeat="no-repeat"
+         background-size="100%" backgroung-position="center"></div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</div>
+</body>
+</html>
