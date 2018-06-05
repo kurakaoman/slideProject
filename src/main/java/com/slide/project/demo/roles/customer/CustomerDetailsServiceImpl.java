@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 
 @Service
@@ -21,7 +22,7 @@ public class CustomerDetailsServiceImpl implements UserDetailsService {
         return  customerRepository.findByName(username);
     }
     //@Transactional <-?????
-    public UserDetails getCustomerByCustomerId(long customerId)
+    public Optional<Customer> getCustomerByCustomerId(long customerId)
     {
         return customerRepository.findById(customerId);//.orElseThrow(EntityNotFoundException::new); <-- ????
     }

@@ -10,11 +10,12 @@ function closeNav() {
 
 /* Login */
 $("#login-button").click(function () {
-     //pobierz dane z inputów
-    console.log("zalogujsię - Click!");
+     //utwórz dwie zmienne username i password i przypisz im wartości z odpowiednich inputów
+    console.log("1) zaloguj_się - Click!");
     var username = $("#username").val();
     var password = $("#password").val();
-    console.log(username,password);
+
+    console.log("2) " + username,password);
 
     $.post({
         //adres żądania
@@ -22,13 +23,16 @@ $("#login-button").click(function () {
         //Header Authorization, <value>
         beforeSend:function (xhr) {
             xhr.setRequestHeader("Authorization",btoa(username + ":" + password));
+            console.log("3) poszło rządanie POST ->");
         },
+
         succes:function (response) {
-            console.log("udane logowanie!", response);
+            console.log("4) udane logowanie! :-)", response);
         },
         error:function () {
-            $("#bad-password").show();
-            $("#bad-login").show();
+            $("#bad-password").removeAttr("hidden");
+            $("#bad-login").removeAttr("hidden");
+            console.log("4) nie udane logowanie! :-(", response);
         }
     })
 })

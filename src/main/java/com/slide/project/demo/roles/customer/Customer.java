@@ -41,7 +41,13 @@ public class Customer implements UserDetails {
     @JoinColumn(name = "admin_id",unique = true)
     private Admin admin;
 
-    public Customer(){}
+    public Customer(String name, String surname, String emailaddress, int age, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.emailaddress = emailaddress;
+        this.age = age;
+        this.password = password;
+    }
 
     public long getId() {
         return id;
