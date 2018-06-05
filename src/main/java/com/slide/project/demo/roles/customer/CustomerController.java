@@ -5,6 +5,7 @@ package com.slide.project.demo.roles.customer;
         import org.springframework.stereotype.Controller;
         import org.springframework.web.bind.annotation.GetMapping;
         import org.springframework.web.bind.annotation.PathVariable;
+        import org.springframework.web.bind.annotation.PostMapping;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.servlet.ModelAndView;
 
@@ -17,9 +18,9 @@ public class CustomerController {
         this.customerDetailsService = customerDetailsService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     //@Secured("Customer")
-    public ModelAndView showCustomerPanel(@PathVariable("id") int id) {
+    public ModelAndView showIdCustomerPanel(@PathVariable("id") int id) {
         ModelAndView model = new ModelAndView();
         model.addObject("Customer", customerDetailsService.getCustomerByCustomerId(id));
         model.setViewName("/page/profilPage/customerPanel.html");

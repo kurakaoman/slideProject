@@ -17,17 +17,19 @@ $("#login-button").click(function () {
 
     console.log("2) " + username,password);
 
-    $.post({
+    $.get({
         //adres żądania
         url:"/demo/slide/project/customer/" + username,
         //Header Authorization, <value>
         beforeSend:function (xhr) {
             xhr.setRequestHeader("Authorization",btoa(username + ":" + password));
-            console.log("3) poszło rządanie POST ->");
+            console.log("3) poszło rządanie GET ->");
         },
 
         succes:function (response) {
             console.log("4) udane logowanie! :-)", response);
+            $("#bad-password").hide();
+            $("#bad-login").hide();
         },
         error:function () {
             $("#bad-password").removeAttr("hidden");
