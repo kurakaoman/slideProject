@@ -114,28 +114,28 @@
     <!-- Slide overlay navigation -Start -->
     <div align="center">
         <div id="myNav" class="overlay">
+            <form class="form" action="/page/loginLogout/loginLogout.html" method="POST">
             <div class="row">
                 <div class="col-md-4">
 
                     <!-- FORM -->
                     <div class="overlay-content">
                         <li class="nav-item" id="login-menu-item">
-                            <form class="form0">
                                 <div class="row">
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-11">
-                                        <input class="form-control" id="username" type="text" placeholder="Użytkownik">
+                                        <input class="form-control" name="username" id="username" type="text" placeholder="Użytkownik">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-11">
-                                        <input class="form-control" id="password" type="password" placeholder="Hasło">
+                                        <input class="form-control" name="password" id="password" type="password" placeholder="Hasło">
                                     </div>
                                 </div>
-                            </form>
+
                         </li>
                         <!--<li class="nav-item" id="logout-menu-item">-->
                         <!--<div class="btn" id="logout-button">Wyloguj</div>-->
@@ -167,13 +167,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="button" class="btn" id="login-button" value="Zaloguj">
+                            <button type="submit" class="btn" id="login-button" value="Zaloguj">Zaloguj</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-
+            </form>
         </div>
         <!-- Use any element to open/show the overlay navigation menu -->
         <span style="font-size:30px;cursor:pointer;color:#f8fdff" class="element"

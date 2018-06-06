@@ -31,12 +31,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .disable()
-                .authorizeRequests()
-//                .antMatchers("/unauth/**", "/page/**")
-                .antMatchers("/**")
-                .permitAll();
+                .csrf() // wez crsf
+                .disable() // wyłącz je czyli ajaxsowe requesty z innego serwera też beda działąć
+                .authorizeRequests() // weź autoryzowanie requestów
+                .antMatchers("/unauth/**", "/page/**") // wsyzstkie requesty  ... "/unauth/**", "/page/**"
+//                .antMatchers("/**")
+                .permitAll() // daj im wszystkim dostęp , bez autoryzacji
+                .and() //i
+                .authorizeRequests() //  wez autoryzacje requestów
+                .anyRequest() // wszytkie requesty ( teraz już bez tych wyżej)
+                .authenticated() // rządaj autoryzacju - czyli musisz być zalogowany
+                .and()             // i
+                .formLogin()        // wez formlogin - formularz logowania
+                .loginPage("/page/loginLogout/loginLogout.html");  // przypisz mu takiego url-a .. teraz jak natrafi na url który wymaga autoryzacji przeneisie mnie do url-u z loginem
 //                .anyRequest()
 //                .authenticated()
 //                .and()

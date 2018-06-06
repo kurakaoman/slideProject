@@ -9,7 +9,7 @@ function closeNav() {
 }
 
 /* Login */
-$("#login-button").click(function () {
+$("#login-buttonbla").click(function () {
      //utwórz dwie zmienne username i password i przypisz im wartości z odpowiednich inputów
     console.log("1) zaloguj_się - Click!");
     var username = $("#username").val();
@@ -17,6 +17,7 @@ $("#login-button").click(function () {
 
     console.log("2) " + username,password);
 
+    //window.location = "url"
     $.get({
         //adres żądania
         url:"/demo/slide/project/customer/" + username,
