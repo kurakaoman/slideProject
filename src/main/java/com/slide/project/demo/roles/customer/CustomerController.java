@@ -34,4 +34,6 @@ public class CustomerController {
         model.setViewName("/page/profilPage/customerPanel.html");
         return model;
     }
+
+
 }

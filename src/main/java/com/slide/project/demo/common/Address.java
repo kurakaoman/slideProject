@@ -25,6 +25,9 @@ public class Address {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "address")
     private Set<Icerink> icerinks = new HashSet<>();
 
+    public Address() {
+    }
+
     public Address(Long addressId, String country, String state, String city, String street, int hause) {
         this.addressId = addressId;
         this.country = country;

@@ -12,6 +12,11 @@ public enum Additional {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long additionalId;
 
+    Additional() {
+    }
+
     Additional(long additionalId) { this.additionalId = additionalId;}
+
+
 
 }

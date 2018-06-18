@@ -22,10 +22,11 @@ public class CustomerDetailsServiceImpl implements UserDetailsService {
         UserDetails byName = customerRepository.findByName(username);
         return byName;
     }
-    //@Transactional <-?????
+//    @Transactional <-?????
     public Optional<Customer> getCustomerByCustomerId(long customerId)
     {
         return customerRepository.findById(customerId);//.orElseThrow(EntityNotFoundException::new); <-- ????
     }
+
 
 }
