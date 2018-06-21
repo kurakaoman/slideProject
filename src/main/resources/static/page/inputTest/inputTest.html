@@ -3,13 +3,13 @@
 <body>
 
 <p>Enter names in the fields, then click "Submit" to submit the form:</p>
-
-<form class="form" id="frm1" action="/unauth/demo/slide/project/test01/outputTest01" method="POST">
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br><br>
+<div align="center">
+<form class="form" id="frm1" action="/unauth/demo/slide/project/test01/outputTest01" method="post">
+    First name: <input type="text" name="username"><br>
+    Last name: <input type="text" name="password"><br><br>
     <input type="button" onclick="myFunction()" value="Submit">
 </form>
-
+</div>
 <script>
     function myFunction() {
         document.getElementById("frm1").submit();

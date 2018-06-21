@@ -18,7 +18,7 @@ public class Admin implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String username;
     private String password;
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "admin")
@@ -46,7 +46,7 @@ public class Admin implements UserDetails{
         return username;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

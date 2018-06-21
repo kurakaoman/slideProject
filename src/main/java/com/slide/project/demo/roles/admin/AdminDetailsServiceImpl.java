@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AdminDetailsServiceImpl implements UserDetailsService {
     private AdminRepository adminRepository;
@@ -16,5 +18,13 @@ public class AdminDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return adminRepository.findByUsername(username);
+    }
+    public Optional<Admin> getAdminByAdminId(long adminId)
+    {
+        return adminRepository.findById(adminId);//.orElseThrow(EntityNotFoundException::new); <-- ????
+    }
+
+    public long create(Admin admin) {
+        return adminRepository.save(admin).getId();
     }
 }

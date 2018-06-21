@@ -19,12 +19,12 @@ public class TestController {
         return model;
     }
 
-    @RequestMapping(value = "/outputTest01", method = RequestMethod.POST)
+    @PostMapping(value = "/outputTest01")
     public ModelAndView showOutputTest(@RequestParam String username, @RequestParam String password){
         ModelAndView model = new ModelAndView();
         model.addObject("userName00", username);
         model.addObject("password00",password);
-        model.setViewName("/page/outputTest/outputTest.html");
+        model.setViewName("page/outputTest/outputTest");
         return model;
     }
 }

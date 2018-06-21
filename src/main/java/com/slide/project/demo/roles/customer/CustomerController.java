@@ -1,12 +1,10 @@
 package com.slide.project.demo.roles.customer;
 
+        import com.slide.project.demo.roles.admin.Admin;
         import org.springframework.security.access.annotation.Secured;
         import org.springframework.security.core.userdetails.UserDetails;
         import org.springframework.stereotype.Controller;
-        import org.springframework.web.bind.annotation.GetMapping;
-        import org.springframework.web.bind.annotation.PathVariable;
-        import org.springframework.web.bind.annotation.PostMapping;
-        import org.springframework.web.bind.annotation.RequestMapping;
+        import org.springframework.web.bind.annotation.*;
         import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -34,6 +32,8 @@ public class CustomerController {
         model.setViewName("/page/profilPage/customerPanel.html");
         return model;
     }
+
+
 
 
 }
