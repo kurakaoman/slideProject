@@ -22,4 +22,8 @@ public class AdminRestController {
     public Admin returnAdminByAdminId(@RequestParam Long id){
         return adminDetailsService.getAdminByAdminId(id).orElse(null);
     }
+    @PostMapping("/newAdmin01")
+    public Admin createAdmin01(@RequestBody Admin admin) {
+        return adminDetailsService.create01(admin);
+    }
 }

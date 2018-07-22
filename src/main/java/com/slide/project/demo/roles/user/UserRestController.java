@@ -20,4 +20,5 @@ public class UserRestController {
         return userDetailsService.create(user);
     }
 
+
 }

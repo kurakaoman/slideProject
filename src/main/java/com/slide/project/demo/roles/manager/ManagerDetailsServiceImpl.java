@@ -17,4 +17,7 @@ public class ManagerDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return managerRepository.findByUsername(username);
     }
+    public Manager create01(Manager manager) {
+        return managerRepository.save(manager);
+    }
 }

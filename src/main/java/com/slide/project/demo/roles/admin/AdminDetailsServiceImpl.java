@@ -27,4 +27,7 @@ public class AdminDetailsServiceImpl implements UserDetailsService {
     public long create(Admin admin) {
         return adminRepository.save(admin).getId();
     }
+    public Admin create01(Admin admin) {
+        return adminRepository.save(admin);
+    }
 }

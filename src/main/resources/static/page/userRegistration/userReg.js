@@ -9,10 +9,56 @@ $("#create").click(function () {
     var password =$("#password").val();
     var mobileNumber= $("#mobileNumber").val();
 
+    var selectedValue = $("#role").val();
+    console.log(selectedValue+"inside user");
+    if(selectedValue == "Customer"){
+        var customer= {
+    name: name
+        }
+        $.post({
+            url: "/v1/customer/newCustomer01",
+            data: JSON.stringify(customer),
+            contentType: "application/json; charset=utf-8",
+            success:
+            //tu cchiałbym stworzyć zmeinna która przyjmowałaby wartość tkaka jak odpowiedz i przypisać ją do tworzonego obiektu user
+                console.log("nowy customer gotowy")
+        })
+        //user.setCustomer(customer);
+    } else if(selectedValue == "Manager"){
+        var manager= {
+    username: name
+        }
+        $.post({
+            url: "/v1/manager/newManager01",
+            data: JSON.stringify(manager),
+            contentType: "application/json; charset=utf-8",
+            success:
+                console.log("nowy manager gotowy")
+        })
+        //user.setManager(manager);
+    } else if(slecetedValue == "Admin"){
+        var admin = {
+            username:name
+        }
+        $.post({
+            url: "/v1/admin/newAdmin01",
+            data: JSON.stringify(admin),
+            contentType: "application/json; charset=utf-8",
+            success:
+                console.log("nowy admin gotowy")
+        })
+        //user.setAdmin(admin);
+    } else {
+        console.log("something goes wrong !! no role!");
+    }
+
     var user = {
         username: name,
         password: password,
-        mobileNumber: mobileNumber
+        mobileNumber: mobileNumber,
+        customer: selectedValue == "Customer"? customer: null,
+        manager: selectedValue == "Manager"? manager: null,
+        admin: selectedValue == "Admin"? admin: null
     };
 
 

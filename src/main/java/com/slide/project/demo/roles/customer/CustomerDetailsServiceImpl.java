@@ -27,6 +27,9 @@ public class CustomerDetailsServiceImpl implements UserDetailsService {
     {
         return customerRepository.findById(customerId);//.orElseThrow(EntityNotFoundException::new); <-- ????
     }
+    public Customer create01(Customer customer) {
+        return customerRepository.save(customer);
+    }
 
 
 }
