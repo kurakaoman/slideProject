@@ -4,6 +4,7 @@ import com.slide.project.demo.common.Address;
 import com.slide.project.demo.icerink.Icerink;
 import com.slide.project.demo.icerink.slide.Slide;
 import com.slide.project.demo.roles.admin.Admin;
+import com.slide.project.demo.roles.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,6 +41,9 @@ public class Customer implements UserDetails {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id",unique = true)
     private Admin admin;
+    //@ManyToMany(fetch = FetchType.EAGER)
+    @OneToOne
+    private User user;
 
     public Customer() {
     }
@@ -123,8 +127,6 @@ public class Customer implements UserDetails {
 //    public void setSlide(Slide slide) {
 //        this.slide = slide;
 //    }
-
-
     public Admin getAdmin() {
         return admin;
     }
@@ -160,5 +162,13 @@ public class Customer implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -6,10 +6,7 @@ import com.slide.project.demo.roles.manager.Manager;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -21,9 +18,9 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String phoneNumber;
-    private Admin admin;
-    private Customer customer;
-    private Manager manager;
+    //@ManyToMany(fetch = FetchType.EAGER)
+    //@ManyToMany(fetch = FetchType.EAGER)
+    //@ManyToMany(fetch = FetchType.EAGER)
 
     public User(){
 
@@ -33,9 +30,9 @@ public class User implements UserDetails {
         this.username =username;
         this.password=password;
         this.phoneNumber=phoneNumber;
-        this.admin=admin;
-        this.customer=customer;
-        this.manager=manager;
+//        this.admin=admin;
+//        this.customer=customer;
+//        this.manager=manager;
     }
 
     @Override
@@ -65,29 +62,29 @@ public class User implements UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public Admin getAdmin() {
-        return admin;
-    }
+//    public Admin getAdmin() {
+//        return admin;
+//    }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
+//    public void setAdmin(Admin admin) {
+//        this.admin = admin;
+//    }
 
-    public Customer getCustomer() {
-        return customer;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
+//
+//    public Manager getManager() {
+//        return manager;
+//    }
+//
+//    public void setManager(Manager manager) {
+//        this.manager = manager;
+//    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -151,9 +148,9 @@ public class User implements UserDetails {
         this.username = builder.username;
         this.password = builder.password;
         this.phoneNumber = builder.phoneNumber;
-        this.customer = builder.customer;
-        this.manager = builder.manager;
-        this.admin = builder.admin;
+//        this.customer = builder.customer;
+//        this.manager = builder.manager;
+//        this.admin = builder.admin;
     }
 
     @Override
@@ -162,10 +159,12 @@ public class User implements UserDetails {
                 "username: " +username + System.lineSeparator() +
                 "password: ****" + System.lineSeparator() +
                 "phoneNumber: " + phoneNumber + System.lineSeparator() +
-                "customer: " + customer.toString() + System.lineSeparator() +
-                "manager: " + manager.toString() + System.lineSeparator() +
-                "admin: " + admin.toString() + System.lineSeparator() +
+//                "customer: " + customer.toString() + System.lineSeparator() +
+//                "manager: " + manager.toString() + System.lineSeparator() +
+//                "admin: " + admin.toString() + System.lineSeparator() +
                 "}";
     }
+
+
 
 }

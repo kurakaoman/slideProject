@@ -36,7 +36,7 @@ $("#create").click(function () {
                 console.log("nowy manager gotowy")
         })
         //user.setManager(manager);
-    } else if(slecetedValue == "Admin"){
+    } else if(selectedValue == "Admin"){
         var admin = {
             username:name
         }
@@ -70,7 +70,14 @@ $("#create").click(function () {
         data: JSON.stringify(user),
         contentType: "application/json; charset=utf-8",
         success: function (response) {
-            window.location.href="/page/profilPage/adminPanel.html?adminId="+response;
+            if(selectedValue == "Admin"){
+                window.location.href="/page/profilPage/adminPanel.html?adminId="+response;
+            } else if(selectedValue =="Manager") {
+                window.location.href = "/page/profilPage/managerPanel.html?managerId=" + response;
+            } else {
+                window.location.href = "/page/profilPage/customerPanel.html?customerId=" + response;
+
+            }
         }
     })
 

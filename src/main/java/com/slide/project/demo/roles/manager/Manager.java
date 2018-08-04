@@ -3,6 +3,7 @@ package com.slide.project.demo.roles.manager;
 import com.slide.project.demo.icerink.Icerink;
 import com.slide.project.demo.roles.admin.Admin;
 import com.slide.project.demo.roles.customer.Customer;
+import com.slide.project.demo.roles.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +24,9 @@ public class Manager implements UserDetails {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id",unique = true)
     private Admin admin;
+    //@ManyToMany(fetch = FetchType.EAGER)
+    @OneToOne
+    private User user;
 
     public Manager(){}
 
@@ -67,5 +71,13 @@ public class Manager implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

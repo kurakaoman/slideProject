@@ -2,6 +2,7 @@ package com.slide.project.demo.roles.admin;
 
 import com.slide.project.demo.roles.customer.Customer;
 import com.slide.project.demo.roles.manager.Manager;
+import com.slide.project.demo.roles.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,9 @@ public class Admin implements UserDetails{
     private Set<Customer> customerList;
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "admin")
     private List<Manager> managerList;
+    //@ManyToMany(fetch = FetchType.EAGER)
+    @OneToOne
+    private User user;
 
     public Admin(){
 
@@ -80,5 +84,13 @@ public class Admin implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
